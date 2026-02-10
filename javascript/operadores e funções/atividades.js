@@ -33,10 +33,13 @@ quantAndMaiusculo(prompt("Digite um nome:"));
 
 console.log("\n"); // Pula uma linha
 
-// Função que verifica se a palavra HTML está no texto
+// Função que verifica se a palavra HTML está presente na frase digitada pelo usuário
 function palavraPresente(frase) {
     console.log(frase.includes("HTML"));
 }
 
-palavraPresente("Eu ja estudei hTmL".toUpperCase()); // Deixa o texto todo em maiúsculo, pois HTML está em maiúsculo, evitando erros. 
+// Converte toda a entrada do usuário para maiúsculas
+let frase = prompt("Digite uma frase:").toUpperCase();
+
+palavraPresente(frase);
 
