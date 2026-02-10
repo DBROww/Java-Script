@@ -38,5 +38,5 @@ function palavraPresente(frase) {
     console.log(frase.includes("HTML"));
 }
 
-palavraPresente("Eu ja estudei hTmL".toUpperCase()); // Deixa o texto todo em maiscúlo, pois HTML está em maiúsculo, evitando erros. 
+palavraPresente("Eu ja estudei hTmL".toUpperCase()); // Deixa o texto todo em maiúsculo, pois HTML está em maiúsculo, evitando erros. 
 
