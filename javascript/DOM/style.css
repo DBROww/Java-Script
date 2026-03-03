@@ -11,3 +11,7 @@ button{
 .destaque{
     color: red;
 }
+
+.oculto{
+    display: none;
+}
