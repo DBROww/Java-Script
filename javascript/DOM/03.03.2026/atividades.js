@@ -105,24 +105,24 @@ let qnt = document.querySelector("#quantidade"); // quantidade caracteres senha
 let validar = document.querySelector("#validar"); // botao validar
 let reportar = document.querySelector("#reportar"); // reportar erro
 
-senha.addEventListener("keyup", function () {
+senha.addEventListener("keyup", function () { // Verifica se a senha é fraca ou aceitável
 
-    if (senha.value.length < 6){
+    if (senha.value.length < 6){ // se for menor do que 6 digitos:
 
-        qnt.textContent = "Caracteres digitados: " + senha.value.length + " ➔ Senha fraca";
+        qnt.textContent = "Caracteres digitados: " + senha.value.length + " ➔ Senha fraca"; 
     }else{
         qnt.textContent = "Caracteres digitados: " + senha.value.length + " ➔ Senha aceitável";
     }
 });
 
-validar.addEventListener("click", function() {
+validar.addEventListener("click", function() { // Verificar se email contém "@" e "."
 
-    if (email.value.includes("@") && email.value.includes(".")){
+    if (email.value.includes("@") && email.value.includes(".")){ // Se tiver:
         reportar.textContent = "Email válido!";
         reportar.style.color = "green";
-    }else{
+    }else{ // Senão:
         reportar.textContent = "Email inválido! Precisa conter '@' e '.'";
         reportar.style.color = "red";
     }
-});
+}); // Vale ressaltar que o input "@." conta como válido!
 
