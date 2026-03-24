@@ -100,7 +100,7 @@ botaoSubmit.addEventListener("click", function () {
 // Exercício - Validação de Campos
 
 let email = document.querySelector("#email"); // input email
-let msg = document.querySelector("#msg"); // <p> para reportar erro abaixo do input email
+let msgEmail = document.querySelector("#msg"); // <p> para reportar erro abaixo do input email
 let senha = document.querySelector("#senha"); // input senha
 let qnt = document.querySelector("#quantidade"); // <p> para exibir quantidade de caracteres da senha
 let validar = document.querySelector("#validar"); // botao para validar email
@@ -135,11 +135,11 @@ senha.addEventListener("keyup", function () {
 validar.addEventListener("click", function () { // Verificar se email contém "@" e "."
 
     if (email.value.includes("@") && email.value.includes(".")) { // Se tiver:
-        reportar.textContent = "Email válido!";
-        reportar.style.color = "green";
+        msgEmail.textContent = "Email válido!";
+        msgEmail.style.color = "green";
     } else { // Senão:
-        msg.textContent = "Email inválido! Precisa conter '@' e '.'";
-        msg.style.color = "red";
+        msgEmail.textContent = "Email inválido! Precisa conter '@' e '.'";
+        msgEmail.style.color = "red";
     }
 }); // Vale ressaltar que o input "@." conta como válido!
 
