@@ -104,7 +104,6 @@ let msgEmail = document.querySelector("#msg"); // <p> para reportar erro abaixo 
 let senha = document.querySelector("#senha"); // input senha
 let qnt = document.querySelector("#quantidade"); // <p> para exibir quantidade de caracteres da senha
 let validar = document.querySelector("#validar"); // botao para validar email
-let reportar = document.querySelector("#reportar"); // <p> para exibir validação abaixo do botão "validar"
 
 // Validação da senha:
 senha.addEventListener("keyup", function () {
