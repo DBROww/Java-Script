@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>TechConnect</h1>
+</header>
+
+<nav>
+    <form id="formCadastro">
+
+        <div class="divCentralizador">
+            <label>NOME</label>
+            <input type="text" id="inputNome" required>
+            <span id="msgNome" class="msgSpan"></span>
+        </div>
+
+        <div class="divCentralizador">
+            <label>EMAIL</label>
+            <input type="email" id="inputEmail" required>
+            <span id="msgEmail" class="msgSpan"></span>
+        </div>
+
+        <div class="divCentralizador">
+            <label>SENHA</label>
+            <input type="password" id="inputSenha" required>
+            <i class="bi bi-eye-fill iconeEye" id="mostrarSenha"></i>
+            <span id="msgSenha" class="msgSpan"></span>
+        </div>
+
+        <div class="divCentralizador">
+            <label>CONFIRMAR SENHA</label>
+            <input type="password" id="confirmarSenha" required>
+            <span id="msgConfirm" class="msgSpan"></span>
+        </div>
+
+        <div class="divCentralizador">
+            <label>CEP</label>
+            <input type="text" id="inputCEP" required>
+            <span id="msgCEP" class="msgSpan"></span>
+        </div>
+
+        <div class="divCentralizador">
+            <label>TELEFONE</label>
+            <div class="inputWrapper">
+                <input type="text" id="inputTelefone" required>
+                <i id="plus" class="bi bi-plus-square-fill iconeAdd"></i>
+            </div>
+            <span id="msgTelefone" class="msgSpan"></span>
+            <ul id="lista"></ul>
+        </div>
+
+        <button type="submit">CADASTRAR</button>
+
+    </form>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- cabeçário exibindo o nome da empresa -->
+    <header>
+        <h1>TechConnect</h1>
+    </header>
+
+    <nav>
+
+        <!-- Formulário de cadastro -->
+        <form>
+
+            <!-- Adquire o nome do usuário -->
+            <div class="divCentralizador">
+                <label>NOME</label> 
+                <input type="text" id="inputNome" placeholder="Digite seu nome:" required>
+                <span id="msgNome" class="msgSpan"></span>
+            </div>
+
+        <!-- Adquire a email do usuário-->
+            <div class="divCentralizador">
+                <label>EMAIL</label>
+                <input type="email" id="inputEmail" placeholder="Digite o email:" required>
+                <span id="msgEmail" class="msgSpan"></span> <!-- Caixa para validação do Email-->
+            </div>
+
+        <!-- Input Senha-->
+            <div class="divCentralizador">
+                <label>SENHA</label>
+                <input type="password" id="inputSenha" placeholder="Digite sua senha:" required>
+                <i class="bi bi-eye-fill iconeEye" id="mostrarSenha"></i><!-- Icone para exibir/ocultar a senha -->
+                <span id="msgSenha" class="msgSpan"></span><!-- Caixa para validação da Senha-->
+            </div>
+        
+        <!-- Confirma Senha-->
+            <div class="divCentralizador">
+                <label>CONFIRMAR SENHA</label>
+                <input type="password" id="confirmarSenha" placeholder="Digite sua senha:" required>
+                <i class="bi bi-eye-fill iconeEye" id="mostrarSenha"></i><!-- Icone para exibir/ocultar a senha -->
+                <span id="msgConfirm" class="msgSpan"></span><!-- Caixa para validação da Senha-->
+            </div>
+
+            <div class="divCentralizador">
+                <label>CEP</label>
+                <input type="text" id="inputCEP" placeholder="00000-000" required>
+                <span id="msgCEP" class="msgSpan"></span><!-- Caixa para validação do Endereço-->
+            </div>
+
+            <div class="divCentralizador">
+                <label>TELEFONE</label>
+                <input type="text" id="inputTelefone" placeholder="+99 (99) 99999-9999" required>
+                <i id="plus" class="bi bi-plus-square-fill iconeAdd"></i> <!-- Icone + para adicionar mais telefones -->
+                <span id="msgTelefone" class="msgSpan"></span><!-- Caixa para validação do Telefone-->
+                <ul id="lista"></ul> <!--Lista para adicionar novos telefones-->
+            </div>
+
+            <button type="submit">CADASTRAR</button> <!-- Botão para finalizar o cadastro-->
+
+        </form>
+
+    </nav>
+
+    <script src="script.js"></script> <!-- liga o JavaScript ao HTML-->
+</body>
+
+</html>
