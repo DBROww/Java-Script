@@ -1,0 +1,403 @@
+* {
+    margin: 0;
+    border-bottom: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+    background-image: url(img/foto.png);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+header {
+    padding: 1vh;
+    margin-top: 1%;
+    margin-bottom: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(58, 40, 19, 0.915);
+    width: 40%;
+    height: 25vh;
+}
+
+.tituloBox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.titulo {
+    background-color: white;
+    border: solid;
+    color: rgb(58, 40, 19, 0.915);
+    padding: 10px;
+    width: 30%;
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#logo {
+    width: 100%;
+    height: 10em;
+    margin-bottom: 0.7vh;
+}
+
+header nav {
+    background-color: rgb(250, 225, 86);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    width: 100%;
+    height: 4vh;
+}
+
+a {
+    color: rgb(68, 66, 66);
+    font-size: 60%;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 1vh 0 1vh;
+}
+
+a:hover {
+    background-color: rgb(235, 203, 26);
+
+}
+
+main {
+    width: 100%;
+    min-height: 220vh;
+    display: flex;
+    flex-direction: row;
+}
+
+#desejadas {
+    width: 55% !important;
+}
+
+#fotos {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    min-width: 50%;
+}
+
+#saboresPizza {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+    margin-left: 5%;
+}
+
+.pizza {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    min-height: 350px;
+    gap: 10px;
+    color: rgb(68, 66, 66);
+}
+
+.nomePizza {
+    background-color: rgb(250, 225, 86);
+    width: 75%;
+    text-align: center;
+    padding: 8px;
+    font-size: 28px;
+    border: solid 4px rgb(74, 50, 35);
+
+}
+
+.fotoPizza {
+    background-color: rgb(74, 50, 35);
+    padding: 10px;
+    height: 240px;
+    width: 240px;
+}
+
+#sectionCardapio {
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 50%;
+    height: 100vh;
+}
+
+.textoCardapio {
+    background-color: rgb(250, 225, 86);
+    padding: 1vh;
+    text-align: center;
+    width: 30%;
+    margin-right: 30%;
+    border: solid 4px rgb(74, 50, 35);
+    color: rgb(68, 66, 66);
+}
+
+#cardapio {
+    width: 95%;
+    margin-right: 30%;
+    background-color: rgb(74, 50, 35);
+    padding: 1.5vh;
+}
+
+footer {
+    background-color: rgb(250, 225, 86);
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+footer nav {
+    display: flex;
+    flex-direction: row;
+}
+
+footer nav a {
+    font-size: larger;
+}
+
+/* =========================
+   RESPONSIVIDADE - 550px
+========================= */
+@media (max-width: 1366px) {
+    header {
+        width: 60%;
+        height: auto;
+    }
+
+    header nav a {
+        font-size: 13px;
+    }
+
+    main {
+        min-height: 250vh;
+    }
+
+    .textoCardapio {
+        width: 50%;
+    }
+
+    .titulo {
+        width: 60%;
+    }
+
+    #desejadas {
+        width: 100% !important;
+    }
+}
+
+/* =========================
+   RESPONSIVIDADE - 720px
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        width: 85%;
+        height: auto;
+        padding: 2vh;
+    }
+
+    .titulo {
+        width: 70%;
+        font-size: 25px;
+    }
+
+    #desejadas {
+        width: 60% !important;
+    }
+
+    header nav {
+        flex-wrap: wrap;
+        height: auto;
+    }
+
+    a {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    main {
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+    }
+
+    #fotos {
+        min-width: 100%;
+        height: auto;
+    }
+
+    #saboresPizza {
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 100%;
+    }
+
+    .pizza {
+        width: 45%;
+        display: flex;
+        align-items: center;
+    }
+
+    .nomePizza {
+        width: 220px;
+        font-size: 22px;
+    }
+
+    .fotoPizza {
+        width: 220px;
+        height: 220px;
+    }
+
+    #sectionCardapio {
+        width: 100%;
+        min-width: 100%;
+        margin-top: 8%;
+        margin-bottom: 8%;
+        height: auto;
+    }
+
+    .textoCardapio {
+        width: 60%;
+        margin-right: 0;
+        font-size: 24px;
+    }
+
+    #cardapio {
+        width: 90%;
+        margin-right: 0;
+    }
+
+    footer {
+        height: 15vh;
+        gap: 10px;
+        text-align: center;
+    }
+
+    footer nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    footer nav a {
+        font-size: 20px;
+    }
+}
+
+/* =========================
+   RESPONSIVIDADE - 550px
+========================= */
+@media (max-width: 550px) {
+
+    header {
+        width: 90%;
+        margin-top: 2%;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: row !important;
+        gap: 0;
+    }
+
+    .titulo {
+        width: 80%;
+        font-size: 26px;
+        padding: 8px;
+    }
+
+    a {
+        font-size: 13px;
+    }
+
+
+    #saboresPizza {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        max-height: 100%;
+        margin: 0;
+    }
+
+    .pizza {
+        width: 100%;
+        margin-bottom: 10%;
+    }
+
+    .nomePizza {
+        width: 70%;
+        font-size: 30px;
+    }
+
+    .fotoPizza {
+        width: 350px;
+        height: 350px;
+    }
+
+    .textoCardapio {
+        width: 80%;
+        font-size: 30px;
+    }
+
+    #cardapio {
+        width: 95%;
+        padding: 1vh;
+    }
+
+    footer nav {
+        gap: 10px;
+    }
+
+    footer nav a {
+        font-size: 17px;
+    }
+}
+
+/* =========================
+   RESPONSIVIDADE - 550px
+========================= */
+
+@media (max-width: 400px) {
+
+    footer nav {
+        gap: 0px;
+        justify-content: space-between;
+        padding: 0px;
+    }
+
+    #desejadas{
+        width: 100%!important;
+    }
+}
+
+/* =========================
+   RESPONSIVIDADE - 375px
+========================= */
+
+@media (max-width: 375px) {
+
+    footer nav {
+    flex-direction: column !important;
+    }
+    footer nav a{
+        font-size: 10px;
+    }
+}

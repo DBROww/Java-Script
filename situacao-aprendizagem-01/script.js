@@ -1,269 +1,274 @@
-let input = document.querySelectorAll("input"); // seleciona todos os inputs
-let span = document.querySelectorAll(".msgSpan"); // seleciona todos os spans
+let form = document.querySelector("#formCadastro"); // Seleciona o form
+let input = document.querySelectorAll("input"); // Seleciona todos os inputs
 
-let inputNome = document.querySelector("#inputNome"); // input Nome
-let msgNome = document.querySelector("#msgNome"); // reportar erro do Nome
+let inputNome = document.querySelector("#inputNome"); // Input Nome
+let msgNome = document.querySelector("#msgNome"); // span Nome
 
-let inputEmail = document.querySelector("#inputEmail"); // input Email
-let msgEmail = document.querySelector("#msgEmail"); // reporta erro do Email
+let inputEmail = document.querySelector("#inputEmail"); // Input Email
+let msgEmail = document.querySelector("#msgEmail"); // span Email
 
-let inputSenha = document.querySelector("#inputSenha"); // input Senha
-let msgSenha = document.querySelector("#msgSenha"); // reporta a força da Senha
+let inputSenha = document.querySelector("#inputSenha"); // Input Senha
+let msgSenha = document.querySelector("#msgSenha"); // span Senha
 
-let confirmaSenha = document.querySelector("#confirmarSenha") // input confirma senha
-let msgConfirm = document.querySelector("#msgConfirm") // reportar erro 
+let confirmaSenha = document.querySelector("#confirmarSenha"); // input Confirmar senha
+let msgConfirm = document.querySelector("#msgConfirm"); // span Confirmar senha
 
-let inputTelefone = document.querySelector("#inputTelefone") // input Telefone
-let msgTelefone = document.querySelector("#msgTelefone"); // reporta erro no Telefone
+let inputTelefone = document.querySelector("#inputTelefone"); // Input Telefone
+let msgTelefone = document.querySelector("#msgTelefone"); // span Telefone
 
-let lista = document.querySelector("#lista");
+let lista = document.querySelector("#lista"); // Lista para adicionar novos Telefones
 
-let inputCEP = document.querySelector("#inputCEP") // input CEP
-let msgCEP = document.querySelector("#msgCEP"); // reporta erro no CEP
+let inputCEP = document.querySelector("#inputCEP"); // Input CEP
+let msgCEP = document.querySelector("#msgCEP"); // span CEP
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
+let msgCadastro = document.querySelector("#msgCadastro"); // span Cadastro
 
-// Função para verificar se o Nome é válido
+//Funções
+// ----------------------------------------------------------------------------------------------------------------------------
+
+// Função para validar Nome
 function validarNome(nome) {
-    const padraoNome = /^[A-Za-zÀ-ÿ\s]+$/; // REGEX para validar nome
-    return padraoNome.test(nome);
+    const padraoNome = /^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/; // REGEX para validar nome
+    return padraoNome.test(nome.trim());
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
-
-// Função para verificar se o Email é válido
+// Função para validar Email
 function validarEmail(email) {
     const padraoEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // REGEX para validar email
-    return padraoEmail.test(email);
+    return padraoEmail.test(email.trim());
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
-
-// Função para verificar nível de força da senha
+// Função para validar Senha
 function validarSenha(senha) {
-    const senhaForte = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#/]{8,}$/ // REGEX para validar senha
+    const senhaForte = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#/]{8,}$/; // REGEX para validar senha
     return senhaForte.test(senha);
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
-
-//função para validar Telefone
+// Função para validar Telefone
 function validarTelefone(telefone) {
-    const padraoTelefone = /^(?:\+)[0-9]{2}\s?(?:\()[0-9]{2}(?:\))\s?[0-9]{4,5}(?:-)[0-9]{4}$/ // REGEX para validar telefone
-    return padraoTelefone.test(telefone);
+    const padraoTelefone = /^(?:\(?\d{2}\)?[\s-]?)?\d{4,5}[-\s]?\d{4}$/; // REGEX para valdar telefone
+    return padraoTelefone.test(telefone.trim());
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
-
-//função validar CEP
+// Função para validar CEP
 function validarCEP(cep) {
-    const padraoCEP = /^\d{5}-?\d{3}$/ // REGEX para validar CEP
-    return padraoCEP.test(cep);
+    const padraoCEP = /^\d{5}-?\d{3}$/; // REGEX para validar CEP
+    return padraoCEP.test(cep.trim());
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
+// Função para deixar a borda de todo input azul ao ser clicado
+input.forEach(function (campo) { // para cada input
 
-// Exibe/Oculta a senha
-let mostrarSenha = document.querySelector("#mostrarSenha"); // refere-se ao icone do olho para exibir a senha
+    campo.addEventListener("focus", function () { // ao clicar deixa a borda azul
+        campo.style.border = "2px solid blue";
+    });
 
-mostrarSenha.addEventListener("click", function () { // Evento ao clicar no icone olho para exibir a senha
-    if (inputSenha.type === "password") { // se o input for do tipo senha
-        inputSenha.setAttribute('type', 'text'); // input troca de atributo, de senha para texto
-        mostrarSenha.classList.replace('bi-eye-fill', 'bi-eye-slash-fill'); // substitui o olho aberto para o fechado
+    campo.addEventListener("blur", function () {
+        campo.value = campo.value.trim();
+        if (campo.style.border !== "2px solid red") { // Se a borda não estiver vermelho, remove a borda
+            campo.style.border = "none";
+        }
+    });
+});
+
+// Funçao para mostrar erro em todos os inputs
+function mostrarErro(campo, mensagem, span) {
+    campo.style.border = "2px solid red"; // deiixa o Campo do input com borda vermelha
+    span.textContent = mensagem; // Mensagem a ser inserida no span
+    span.style.color = "red";
+}
+
+// Função para limpar o erro do input
+function limparErro(campo, span) {
+    span.textContent = ""; // Deixa o conteúdo do span vazio
+
+    if (document.activeElement === campo) { // Se o input ainda estiver em foco
+        campo.style.border = "2px solid blue"; // Campo do input com borda azul
     } else {
-        inputSenha.setAttribute('type', 'password'); // se o input for do tipo texto então ele vira do tipo senha
-        mostrarSenha.classList.replace('bi-eye-slash-fill', 'bi-eye-fill'); // o olho volta a ficar aberto
+        campo.style.border = "none"; // borda normal
     }
-});
+}
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
+// Função para mostrar/ocultar a senha
+function alternarSenha(campo, icone) {
+    if (campo.type === "password") { // input
+        campo.type = "text"; // altera password para text
+        icone.classList.replace("bi-eye-fill", "bi-eye-slash-fill"); // icone de olho
+    } else {
+        campo.type = "password"; // Transforma o input em type password
+        icone.classList.replace("bi-eye-slash-fill", "bi-eye-fill"); // Altera o icone
+    }
+}
 
-// Seleção de input azul
-input.forEach(i => i.required = true);// Faz o input ser obrigatorio
+// Eventos
+// ----------------------------------------------------------------------------------------------------------------------------
 
-input.forEach(function (input) { // Para cada input
+// Evento ao clicar no icone "#mostrarSenha" do inputSenha
+document.querySelector("#mostrarSenha").addEventListener("click", function () {
+    alternarSenha(inputSenha, this); // aplica a função de mostrar/ocultar senha
+}); // this é usado para se "pegar" o icone clicado
 
-    input.addEventListener("focus", function () { // Ao clicar deixa a borda azul
-        input.style.border = "2px solid blue";
-    });
+// Evento ao clicar no icone "#mostrarConfirmarSenha" do input confirmaSenha
+document.querySelector("#mostrarConfirmarSenha").addEventListener("click", function () {
+    alternarSenha(confirmaSenha, this); // aplica a função de mostrar/ocultar senha
+}); // this é usado para se "pegar" o icone clicado
 
-    input.addEventListener("blur", function () { // Ao sair a borda volta ao normal 
-        input.style.border = "none";
-        span.textContent = " "
-    });
-
-});
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-// Validando Nome
-
+// Validação do nome
 inputNome.addEventListener("input", function () {
-
-    if (inputNome.value === "") { // Se estiver vazio não aplica erro
-        inputNome.style.border = "2px solid blue";
-        msgNome.textContent = ""
+    if (inputNome.value.trim() === "") { // Se for vazio
+        limparErro(inputNome, msgNome); // Deixa a borda normal
+    } else if (!validarNome(inputNome.value)) {
+        mostrarErro(inputNome, "Deve conter apenas letras e acentos.", msgNome); // Acrescenta o erro
+    } else {
+        limparErro(inputNome, msgNome); // Deixa a borda normal
     }
-    else if (!validarNome(inputNome.value)) { // aplica a função validarNome(nome)
-        inputNome.style.border = "2px solid red";
-        msgNome.textContent = "Deve conter apenas letras e acentos";
-        msgNome.style.color = "red";
-    }
-
-    else {
-        inputNome.style.border = "2px solid blue";
-        msgNome.textContent = "";
-    }
-
 });
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
-// Validando Email
-
+// Validação de email
 inputEmail.addEventListener("input", function () {
-
-    if (inputEmail.value === "") { // Se estiver vazio não apresenta erro
-        inputEmail.style.border = "2px solid blue";
-        msgEmail.textContent = ""
+    if (inputEmail.value.trim() === "") { // Se for vazio
+        limparErro(inputEmail, msgEmail); // Deixa a borda normal
+    } else if (!validarEmail(inputEmail.value)) {
+        mostrarErro(inputEmail, "Digite um email valido.", msgEmail); // Acrescenta o erro
+    } else {
+        limparErro(inputEmail, msgEmail); // Deixa a borda normal
     }
-    else if (!validarEmail(inputEmail.value)) { // aplica a função validarEmail(email)
-        inputEmail.style.border = "2px solid red";
-        msgEmail.textContent = "Digite um Email válido!";
-        msgEmail.style.color = "red";
-    }
-    else {
-        inputEmail.style.border = "2px solid blue";
-        msgEmail.textContent = ""
-    }
+});
 
-})
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-// Validando Senha
-
+// Validação de senha *mesmo padrão das outras validações
 inputSenha.addEventListener("input", function () {
-
-    if (inputSenha.value === "") { // Se estiver vazio não apresenta erro
-        inputSenha.style.border = "2px solid blue";
-        msgSenha.textContent = ""
+    if (inputSenha.value.trim() === "") {
+        limparErro(inputSenha, msgSenha);
+    } else if (!validarSenha(inputSenha.value)) {
+        mostrarErro(inputSenha, "Min. 8 caracteres com maiuscula, minuscula, numero e simbolo.", msgSenha);
+    } else {
+        limparErro(inputSenha, msgSenha);
     }
-    else if (!validarSenha(inputSenha.value)) { // aplica a função validarSenha(senha)
-        inputSenha.style.border = "2px solid red";
-        msgSenha.innerHTML = "Mín. 8 caracteres com maiúscula, minúscula, número e símbolo.";
-        msgSenha.style.color = "red";
+    // Se o input confirmarSenha não for nulo
+    if (confirmaSenha.value !== "") {
+        confirmaSenha.dispatchEvent(new Event("input")); // Ativa um evento no Input 
     }
-    else {
-        inputSenha.style.border = "2px solid blue";
-        msgSenha.textContent = ""
-    }
+});
 
-})
-
-// Confirmando Senha
-
+// Confirmar se a senha está igual a anterior *mesma lógica das outras validações
 confirmaSenha.addEventListener("input", function () {
-    if (confirmaSenha.value === "") { // Se estiver vazio não apresenta erro
-        confirmaSenha.style.border = "2px solid blue";
-        msgConfirm.textContent = ""
+    if (confirmaSenha.value.trim() === "") { // se for vazio
+        limparErro(confirmaSenha, msgConfirm);
+    } else if (confirmaSenha.value !== inputSenha.value) { // se for diferente
+        mostrarErro(confirmaSenha, "A senha deve ser a mesma que a anterior.", msgConfirm);
+    } else { // se for válido
+        limparErro(confirmaSenha, msgConfirm);
     }
-    else if (confirmaSenha.value !== inputSenha.value) {
-        confirmaSenha.style.border = "2px solid red";
-        msgConfirm.innerHTML = "A senha deve ser a mesma que a anterior!";
-        msgConfirm.style.color = "red";
-    }
-    else {
-        confirmaSenha.style.border = "2px solid blue";
-        msgConfirm.textContent = ""
-    }
-})
+});
 
-//------------------------------------------------------------------------------------------------------------------------------------------------
-// Validando CEP
-
+// Validação CEP *mesma lógica das validações aneriores
 inputCEP.addEventListener("input", function () {
-
-    if (inputCEP.value === "") { // Se estiver vazio não apresenta erro
-        inputCEP.style.border = "2px solid blue";
-        msgCEP.textContent = ""
+    if (inputCEP.value.trim() === "") {
+        limparErro(inputCEP, msgCEP);
+    } else if (!validarCEP(inputCEP.value)) {
+        mostrarErro(inputCEP, "Digite um CEP valido.", msgCEP);
+    } else {
+        limparErro(inputCEP, msgCEP);
     }
-    else if (!validarCEP(inputCEP.value)) { // aplica a função validarCEPl(cep)
-        inputCEP.style.border = "2px solid red";
-        msgCEP.textContent = "Digite um CEP válido!";
-        msgCEP.style.color = "red";
-    }
-    else {
-        inputCEP.style.border = "2px solid blue";
-        msgCEP.textContent = ""
-    }
+});
 
-})
-
-//------------------------------------------------------------------------------------------------------------------------------------------------
-// Validando Telefone
-
+// Validação Telefone *mesma lógica das validações aneriores
 inputTelefone.addEventListener("input", function () {
-
-    if (inputTelefone.value === "") { // Se estiver vazio não apresenta erro
-        inputTelefone.style.border = "2px solid blue";
-        msgTelefone.textContent = ""
+    if (inputTelefone.value.trim() === "") {
+        limparErro(inputTelefone, msgTelefone);
+    } else if (!validarTelefone(inputTelefone.value)) {
+        mostrarErro(inputTelefone, "Digite um telefone valido conforme o modelo.", msgTelefone);
+    } else {
+        limparErro(inputTelefone, msgTelefone);
     }
-    else if (!validarTelefone(inputTelefone.value)) { // aplica a função validarEmail(email)
-        inputTelefone.style.border = "2px solid red";
-        msgTelefone.textContent = "Digite um Telefone válido conforme o esboço!";
-        msgTelefone.style.color = "red";
-    }
-    else {
-        inputTelefone.style.border = "2px solid blue";
-        msgTelefone.textContent = ""
-    }
+});
 
-})
+// Evento para adicionar mais telefones ao clicar no icone "#adicionar"
+document.querySelector("#adicionar").addEventListener("click", function () {
 
-// Acrescentando mais Telefones
+    let novoTelefone = document.createElement("li"); // adiciona um <li> na "#lista"
+    let div = document.createElement("div"); // cria uma div
+    div.classList.add("divTelefone"); // adiciona na div a classe divTelefone
+    let inputNovo = document.createElement("input"); // Cria um input para digitar outro telefone
+    let erro = document.createElement("span"); // cria o span para retornar mensagem de erro
+    let remove = document.createElement("i"); // cria o icone de remover
 
-let plus = document.querySelector("#plus");
-
-plus.addEventListener('click', function () {
-    let novoTelefone = document.createElement("li");
-    let inputNovo = document.createElement("input");
-    let remove = document.createElement("i");
-    let erro = document.createElement("span"); // <-- span de erro
-
-    inputNovo.type = "text";
+    inputNovo.type = "text"; // Define o input como tipo texto
     inputNovo.placeholder = "Digite outro telefone";
-    inputNovo.classList.add("input");
+    inputNovo.required = true; // input obrigatório
 
-    erro.textContent = ""; // mensagem inicial vazia
-    erro.classList.add("erro"); // classe para estilizar (ex: vermelho)
+    erro.classList.add("erroDinamico"); // adiciona a classe erroDinamico ao span
+    remove.classList.add("bi", "bi-dash-square-fill", "iconeRemove"); // adiciona o icone desejado ao elemento <i>
 
-    remove.classList.add("bi", "bi-x-circle", "excluir-icon");
+    // Adiciona os elementos dentro da div
+    div.appendChild(inputNovo);
+    div.appendChild(erro);
+    div.appendChild(remove);
 
-    novoTelefone.appendChild(inputNovo);
-    novoTelefone.appendChild(erro); // <-- adiciona abaixo do input
-    novoTelefone.appendChild(remove);
+    // Adiciona a div dentro do li
+    novoTelefone.appendChild(div);
 
+    // Adiciona o li na lista
     lista.appendChild(novoTelefone);
 
-    // Evento para remover
-    remove.addEventListener('click', function () {
+    //Recriando função da borda azul para o inputNovo
+    inputNovo.addEventListener("focus", function () {
+        inputNovo.style.border = "2px solid blue";
+    });
+
+    inputNovo.addEventListener("blur", function () {
+        inputNovo.value = inputNovo.value.trim();
+        if (inputNovo.style.border !== "2px solid red") { // Se a borda não estiver vermelho, remove a borda
+            inputNovo.style.border = "none";
+        }
+    });
+
+
+    // Validação do input do novo telefone *mesma lógica das outras validações
+    inputNovo.addEventListener("input", function () {
+        if (inputNovo.value.trim() === "") {
+            limparErro(inputNovo, erro);
+        } else if (!validarTelefone(inputNovo.value)) {
+            mostrarErro(inputNovo, "Telefone inválido!", erro);
+        } else {
+            limparErro(inputNovo, erro);
+        }
+    });
+    // Ao clicar no icone "remove" apaga o <li> da "#lista"
+    remove.addEventListener("click", function () {
         lista.removeChild(novoTelefone);
     });
 });
 
-// Validação do telefone dinâmico
-inputNovo.addEventListener("input", function () {
+// Validação do cadastro para o submit
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); // impede o formuláriio de ser enviado antes da validação
 
-    if (inputNovo.value === "") {
-        inputNovo.style.border = "2px solid blue";
-        erro.textContent = "";
-    }
-    else if (!validarTelefone(inputNovo.value)) {
-        inputNovo.style.border = "2px solid red";
-        erro.textContent = "Telefone inválido!";
-        erro.style.color = "red";
-    }
-    else {
-        inputNovo.style.border = "2px solid blue";
-        erro.textContent = "";
-    }
+    let formValido = true; // define o submit como true
 
+    // Valida cada input
+    if (!validarNome(inputNome.value)) { formValido = false } // Se for diferente do REGEX - Inválido
+    if (!validarEmail(inputEmail.value)) { formValido = false }
+    if (!validarSenha(inputSenha.value)) { formValido = false }
+    if (confirmaSenha.value !== inputSenha.value || confirmaSenha.value.trim() === "") { formValido = false }
+    if (!validarCEP(inputCEP.value)) { formValido = false }
+    if (!validarTelefone(inputTelefone.value)) { formValido = false }
+
+    // Validação telefones extras
+    let telefonesExtras = lista.querySelectorAll("input"); // seleciona todos os inputs dentro da lista
+
+    telefonesExtras.forEach(function (telefoneExtra) { // para cada telefone extra
+        if (telefoneExtra.value.trim() === "" || !validarTelefone(telefoneExtra.value)) { // se for vazio ou não bater com o REGEX
+            formValido = false; // inválido
+        }
+    });
+
+    // Validação final
+    if (formValido) { // Se tudo for válido
+        msgCadastro.textContent = "Cadastro realizado com sucesso!";
+        msgCadastro.style.color = "green";
+    } else {
+        msgCadastro.textContent = "Preencha todos os campos corretamente.";
+        msgCadastro.style.color = "red";
+    }
 });
