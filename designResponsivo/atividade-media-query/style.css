@@ -343,7 +343,7 @@ footer nav a {
     }
 
     .nomePizza {
-        width: 70%;
+        width: 350px;
         font-size: 30px;
     }
 
@@ -372,7 +372,7 @@ footer nav a {
 }
 
 /* =========================
-   RESPONSIVIDADE - 550px
+   RESPONSIVIDADE - 400px
 ========================= */
 
 @media (max-width: 400px) {
@@ -384,7 +384,7 @@ footer nav a {
     }
 
     #desejadas{
-        width: 100%!important;
+        width: 94.3% !important;
     }
 }
 
@@ -394,10 +394,7 @@ footer nav a {
 
 @media (max-width: 375px) {
 
-    footer nav {
-    flex-direction: column !important;
-    }
     footer nav a{
-        font-size: 10px;
+        font-size: 15px;
     }
 }
