@@ -1,0 +1,7 @@
+A página NewsToday foi totalmente aprimorada com foco na melhoria da interface, da usabilidade e da experiência do usuário. Durante o processo de reformulação, busquei manter a identidade visual semelhante à do front-end anterior, para que os usuários não precisassem se adaptar de forma drástica a uma interface completamente diferente, garantindo uma navegação mais intuitiva.
+
+Entre as principais mudanças, foram feitas a padronização das fontes utilizadas em todo o site, proporcionando maior consistência visual, e a reorganização das notícias, tornando a disposição dos conteúdos mais atraente, organizada e de fácil visualização. Além disso, foram criadas páginas HTML específicas para cada categoria de notícias: Tecnologia, Esportes e Economia, juntamente com uma página exclusiva para Contato.
+
+Também foi realizada uma reestruturação completa da semântica do código HTML, visando melhorar a acessibilidade, a organização do conteúdo e o desempenho do site nos mecanismos de busca. Como complemento, foi desenvolvido um Header dinâmico que exibe data e hora em tempo real, além de animações de transição entre páginas utilizando JavaScript, proporcionando uma navegação mais fluida e moderna.
+
+Por fim, foram aplicadas técnicas de responsividade por meio de Media Queries, garantindo uma experiência otimizada em diferentes tamanhos de tela e dispositivos, desde computadores até smartphones.
