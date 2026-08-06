@@ -19,7 +19,7 @@ class Aluno {
 
     // MÉTODO 2
     estudar() {
-        console.log(`O Aluno: ${this.nome} - Matrícula: ${this.matricula} -> Está estudando o curso ${this.matricula} `);
+        console.log(`O Aluno: ${this.nome} - Matrícula: ${this.matricula} -> Está estudando o curso ${this.curso} `);
     }
 
     // MÉTODO 3
