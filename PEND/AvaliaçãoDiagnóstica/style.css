@@ -4,35 +4,43 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {}
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 
 .header {
     position: fixed;
     z-index: 99999;
     transition: transform 0.3s ease-in-out;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
     background-color: #363974;
     color: white;
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     height: 10vh;
+    width: 100%;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.header a{
+    text-decoration: none;
+    color: white;
+}
 /* Esconde o header utilizando JavaScript */
 .header.escondido {
     transform: translateY(-100%);
 }
 
-#relogioContainer{
+#relogioContainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 21%;
 }
 
-#menu{
+#menu {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -41,23 +49,23 @@ body {}
     width: 15%;
 }
 
-#menu li{
+#menu li {
     list-style: none;
 }
 
-main {
+.conteudo {
+    margin-top: 10vh;
+    height: auto;
     width: 100%;
 }
 
-main ul {
+.conteudo ul {
     margin-left: 10vh;
 }
 
-#listaSkill{
+#listaSkill {}
 
-}
-
-#listaSkill li{
+#listaSkill li {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -66,18 +74,19 @@ main ul {
     font-weight: bold;
 }
 
-.icons{
+.icons {
     width: 22px;
     height: 22px;
     border-radius: 0;
     box-shadow: none;
 }
 
-img{
+img {
     border-radius: 20px;
     box-shadow: 0 10px 10px rgb(2, 2, 2, 0.5);
 }
-.box{
+
+.box {
     margin-left: 20vh;
     width: 65%;
     margin-top: 10vh;
@@ -90,16 +99,16 @@ img{
     width: 70%;
 }
 
-.textBox{
+.textBox {
     margin-top: 5vh;
-    padding:  1vh 0 1vh 0;
+    padding: 1vh 0 1vh 0;
     box-shadow: 0px 5px 10px rgb(2, 2, 2, 0.5);
     border-radius: 15px;
     margin-left: 5vh;
     height: auto;
 }
 
-.textBox p{
+.textBox p {
     margin: 2.5vh;
     font-size: 18px;
 }
@@ -113,5 +122,5 @@ footer {
     height: 10vh;
     margin-top: 10vh;
     color: white;
-    background-color: #333 ;
+    background-color: #333;
 }
