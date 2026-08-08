@@ -7,9 +7,12 @@
 body {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh !important;
+    width: 100%;
+    background-color: #333;
 }
 
+/* -------------------------------------------- HEADER */
 .header {
     position: fixed;
     z-index: 99999;
@@ -24,10 +27,11 @@ body {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.header a{
+.header a {
     text-decoration: none;
     color: white;
 }
+
 /* Esconde o header utilizando JavaScript */
 .header.escondido {
     transform: translateY(-100%);
@@ -53,19 +57,96 @@ body {
     list-style: none;
 }
 
+/* -------------------------------------------- MAIN */
+
+/* Animação de carregar que faz o conteúdo aparecer de forma suave */
 .conteudo {
+    /* Main */
     margin-top: 10vh;
-    height: auto;
+    height: 100%;
     width: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Página carregada */
+.conteudo.ativo {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Saindo da página */
+.conteudo.saindo {
+    opacity: 0;
+    transform: translateY(-20px);
 }
 
 .conteudo ul {
     margin-left: 10vh;
 }
 
-#listaSkill {}
+h1 {
+    color: white;
+    text-shadow:
+        0 0 5px #363974,
+        0 0 10px #363974,
+        0 0 15px #363974,
+        0 0 30px #363974;
 
-#listaSkill li {
+}
+
+/* Caixas de texto e Sections */
+.box {
+    margin-left: 20vh;
+    width: calc(100% - 20vh);
+    margin-top: 10vh;
+}
+
+.textBox {
+    margin-top: 5vh;
+    padding: 1vh 0 1vh 0;
+    box-shadow: 0px 6px 10px #363974;
+    border-radius: 15px;
+    margin-left: 5vh;
+    height: auto;
+    width: 70%;
+    background-color: white;
+}
+
+.textBox p {
+    margin: 2.5vh;
+    font-size: 18px;
+}
+
+#info { /* Div info "Me chamo Davi" */
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.infoEu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 41%;
+}
+
+#logoSenai {
+    margin-top: 4vh;
+    width: 60%;
+    border-radius: 0px;
+    box-shadow: 0 0 0 0;
+}
+
+#fotoEu {
+    width: 300px;
+    height: 300px;
+}
+
+
+#listaSkill li { /* Section Minhas Habilidades */
     display: flex;
     align-items: center;
     gap: 10px;
@@ -74,44 +155,63 @@ body {
     font-weight: bold;
 }
 
-.icons {
+.icons { /* Icones linguagens */
     width: 22px;
     height: 22px;
     border-radius: 0;
     box-shadow: none;
 }
 
-img {
-    border-radius: 20px;
-    box-shadow: 0 10px 10px rgb(2, 2, 2, 0.5);
+
+.linkFluxeGit a { /* Div para organizar link do Git e Fluxe + Imagens */
+    font-size: 22px;
+    text-decoration: none;
+    color: #363974;
 }
 
-.box {
-    margin-left: 20vh;
-    width: 65%;
-    margin-top: 10vh;
+.linkFluxeGit a:hover {
+    transform: translateX(2px);
+    text-decoration: none;
+    color: #3f4288;
 }
 
-#info {
-    margin-top: 5vh;
+.fluxe { /* Div somente do link Fluxe */
     display: flex;
-    flex-direction: row;
-    width: 70%;
+    flex-direction: column;
+    margin-left: 4vh;
+    gap: 10px;
 }
 
-.textBox {
-    margin-top: 5vh;
-    padding: 1vh 0 1vh 0;
-    box-shadow: 0px 5px 10px rgb(2, 2, 2, 0.5);
-    border-radius: 15px;
-    margin-left: 5vh;
-    height: auto;
+.fluxe a {
+    width: 180px;
 }
 
-.textBox p {
-    margin: 2.5vh;
-    font-size: 18px;
+#fluxeIMG {
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0 0 0 0;
 }
+
+.git { /* Div somente do link Git */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 4vh;
+    gap: 10px;
+}
+
+#gitIMG {
+    width: 20%;
+    border-radius: 10px;
+    box-shadow: 0 0 0 0;
+}
+
+img { /* Todas as imagens */
+    border-radius: 20px;
+    box-shadow: 0 10px 10px #363974;
+}
+
+/* -------------------------------------------- FOOTER */
 
 footer {
     display: flex;
@@ -122,5 +222,51 @@ footer {
     height: 10vh;
     margin-top: 10vh;
     color: white;
-    background-color: #333;
+    background-color: #202020;
 }
+
+.contato { /* Div para contatos no footer */
+    display: flex;
+    gap: 30px;
+}
+ /* -------------------------------------------- contato.html */
+
+.contatoPage{ /* Main */
+    height: 70vh;
+}
+
+#formContato { /* Form autoexplicativo */
+    margin-top: 5vh;
+    padding: 10px;
+    box-shadow: 0px 5px 10px #363974;
+    border-radius: 15px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+}
+
+input {
+    border-radius: 10px;
+    height: 25px;
+}
+
+.botao {
+    border-radius: 10px;
+    height: 30px;
+    width: 200px;
+    cursor: pointer;
+    color: white;
+    background-color: #363974;
+    border: #333;
+}
+
+#divRow { /* Div para deixar mensagem ao lado do botão submit */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* -------------------------------------------- Media Query */
+/* Ficará para outro dia pois irei dormir, 08/08/26 01:00AM. Boa noite */ 
