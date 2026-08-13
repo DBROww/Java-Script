@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sobre Mim</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -13,21 +14,23 @@
         <h1>QUEM SOU EU?</h1>
         <span id="relogioContainer"><span id="data-relogio"></span> | <span id="tempo-relogio"></span></span>
         <ul id="menu">
-            <li>Inicio</li>
-            <li>Sobre</li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#sobre">Sobre</a></li>
             <li><a href="contato.html">Contato</a></li>
         </ul>
     </header>
 
     <main class="conteudo">
-        <section class="quemSou box">
+        <section class="box">
             <h1>Me chamo Davi</h1>
             <div id="info">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtPz9DaaUmvn-8bNrm8MGcc7o0g1kpoZceNm4y8buQog&s=10"
-                    alt="Minha Foto">
-                <div class="textBox">
-                    <p>Atualmente em 2026 tenho 17 anos e estou em meu último ano de Ensino Médio e do Curso de
-                        Desenvolvimentos de Sistemas do SENAI.</p>
+                <img src="img/fotoEu.jpg" alt="Minha Foto" id="fotoEu" />
+                <div class="textBox infoEu">
+                    <p>
+                        Atualmente em 2026 tenho 17 anos e estou em meu último ano de
+                        Ensino Médio e do Curso de Desenvolvimentos de Sistemas do SENAI.
+                    </p>
+                    <img src="img/logo-senai1.png" alt="" id="logoSenai" />
                 </div>
             </div>
         </section>
@@ -35,73 +38,83 @@
         <section class="experiencia box">
             <h1>Minhas experiências</h1>
             <div class="textBox">
-                <p>Iniciei minha "Vida de Trabalhador" como Gesseiro e ali aprendi muito sobre responsabilidade,
-                    autonomia,
-                    controle emocional/situacional, e também, sobre como a vida e o dinheiro funciona.</p>
-
-                <p>Atualmente, além do Gesso, também trabalho ajudando meu pai com instalações de papéis de parede,
-                    pintura
-                    e algumas restaurações.</p>
-
-                <p>A respeito de minha área profissional, pretendo atuar no mercado de trabalho como programador
-                    Full-Stack
-                    ou algo relacionado na área de tecnologia</p>
-
-                <p>Tratando de um lado mais pessoal, eu também aprendi muito sobre trabalho em equipe e interações
-                    sociais,
-                    graças a igreja que frequento, onde participo de uma banda como Baterista e agora discipulo um
-                    adolescente de 13 anos chamado Pedro, onde o ensino sobre os principios da Fé e o carater de um
-                    cristão
-                    verdadeiro de acordo com a Bíblia. Apesar de ser eu quem o ensina, eu também aprendo muito com ele,
-                    pois
-                    ele me ajuda a me dedicar mais no meu desenvolvimento como "Professor" e ainda, como pessoa. </p>
-
-            </div>
-        </section>
-
-        <section class="habilidades box">
-            <h1>Minhas Habilidades</h1>
-
-            <div class="textBox">
-                <p>Como aprendiz de DS, atualmente possuo conhecimento nas seguintes linguagens:
-
-                <ul id="listaSkill">
-                    <li> <img src="img/Python.webp" class="icons">Python</li>
-                    <li> <img src="img/javascript.png" class="icons">JavaScript</li>
-                    <li> <img src="img/PHP.webp" class="icons">PHP</li>
-                    <li> <img src="img/html.jpg" class="icons">HTML</li>
-                    <li> <img src="img/CSS.webp" class="icons">CSS</li>
-                    <li> <img src="img/dart.webp" class="icons">DART</li>
-                </ul>
-
-                <p>Em todas as minhas "construções" de sites eu sempre prezo pelo UI e UX, deixando o design responsivo
-                    e organizado.</p>
+                <p>
+                    Iniciei minha "Vida de Trabalhador" como Gesseiro e ali aprendi
+                    muito sobre responsabilidade, autonomia, controle
+                    emocional/situacional, e também, sobre como a vida e o dinheiro
+                    funciona. Atualmente, além do Gesso, também trabalho ajudando meu
+                    pai com instalações de papéis de parede, pintura e algumas
+                    restaurações.
                 </p>
 
                 <p>
-                    Atualmente este é meu principal projeto, onde junto com outras 4 pessoas, estou trabalhando para o
-                    nosso
-                    TCC.
-
-                <ul>
-                    <li><a href="https://fluxeteam.com.br/" target="_blank">fluxeteam.com.br</a></li>
-                </ul>
+                    A respeito de minha área profissional, pretendo atuar no mercado de
+                    trabalho como programador Full-Stack ou algo relacionado na área de
+                    tecnologia
                 </p>
-                <p>Aqui você pode encontrar alguns de meus projetos: </p>
-                <ul>
-                    <li><a href="https://github.com/DBROww">GitHub - DBROww</a></li>
+
+                <p>
+                    Tratando de um lado mais pessoal, eu também aprendi muito sobre
+                    trabalho em equipe e interações sociais, graças a igreja que
+                    frequento, onde participo de uma banda como Baterista e agora
+                    discipulo um adolescente de 13 anos chamado Pedro, onde o ensino
+                    sobre os principios da Fé e o carater de um cristão verdadeiro de
+                    acordo com a Bíblia. Apesar de ser eu quem o ensina, eu também
+                    aprendo muito com ele, pois ele me ajuda a me dedicar mais no meu
+                    desenvolvimento como "Professor" e ainda, como pessoa.
+                </p>
+            </div>
+        </section>
+
+        <section class="habilidades box" id="sobre">
+            <h1>Minhas Habilidades</h1>
+            <div class="textBox">
+                <p>
+                    Como aprendiz de DS, atualmente possuo conhecimento nas seguintes
+                    linguagens:
+                </p>
+                <ul id="listaSkill">
+                    <li><img src="img/Python.webp" class="icons" />Python</li>
+                    <li><img src="img/javascript.png" class="icons" />JavaScript</li>
+                    <li><img src="img/PHP.webp" class="icons" />PHP</li>
+                    <li><img src="img/html.jpg" class="icons" />HTML</li>
+                    <li><img src="img/CSS.webp" class="icons" />CSS</li>
+                    <li><img src="img/dart.webp" class="icons" />DART</li>
                 </ul>
+
+                <p>
+                    Em todas as minhas "construções" de sites eu sempre prezo pelo UI e
+                    UX, deixando o design responsivo e organizado.
+                </p>
+
+                <p>
+                    Atualmente este é meu principal projeto, onde junto com outras 4
+                    pessoas, estou trabalhando em nosso TCC:
+                </p>
+
+                <div class="linkFluxeGit fluxe">
+                    <a href="https://fluxeteam.com.br/" target="_blank">fluxeteam.com.br</a>
+                    <img src="img/fluxe.png" alt="Imagem Site fluxeteam.com.br" id="fluxeIMG" />
+                </div>
+
+                <p>Aqui você pode encontrar alguns de meus projetos:</p>
+
+                <div class="linkFluxeGit git">
+                    <a href="https://github.com/DBROww">GitHub - DBROww</a>
+                    <img src="img/GitHub-Logo.png" alt="Logo GitHub" id="gitIMG">
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <h3>Principais Redes:</h3>
-        <ul>
-            <li>Email: email@gmail.com</li>
-            <li>GitHub: <a href="https://github.com/DBROww" target="_blank">DBROww</a></li>
-            <li>Instagram: @ContaFicticia</li>
-        </ul>
+
+        <h3>Davi Gonçalves Menezes</h3>
+        <section class="contato">
+            <span><i class="bi bi-envelope-fill"></i> Email: email@gmail.com</span>
+            <span><i class="bi bi-github"></i> GitHub: DBROww</span>
+            <span><i class="bi bi-instagram"></i> Instagram: @ContaFicticia</span>
+        </section>
     </footer>
 
     <script src="script.js"></script>

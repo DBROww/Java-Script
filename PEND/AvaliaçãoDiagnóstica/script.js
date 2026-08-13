@@ -63,6 +63,21 @@ document.addEventListener("DOMContentLoaded", () => {
             // Define o link clicado como destino
             const destino = this.getAttribute("href");
 
+            if (destino && destino.startsWith("#")) {
+
+                e.preventDefault();
+
+                conteudo.classList.remove("ativo");
+                conteudo.classList.add("saindo");
+
+                setTimeout(() => {
+                    window.location.hash = destino;
+                    conteudo.classList.remove("saindo");
+                    conteudo.classList.add("ativo");
+                }, 400);
+
+                return;
+            }
             // Verifica se o link é uma página interna bloqueia sistes externos
             if (
                 destino &&
@@ -83,4 +98,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-}); 
+});
+
+// ------------------------------------------------------------
+
+const formulario = document.getElementById("formContato");
+const mensagem = document.getElementById("mensagem");
+
+formulario.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    // Regex
+    const regexNome = /^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]{2,}$/;
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    if (!regexNome.test(nome)) {
+        mensagem.textContent = "Digite um nome válido.";
+        mensagem.style.color = "red";
+        return;
+    }
+
+    if (!regexEmail.test(email)) {
+        mensagem.textContent = "Digite um e-mail válido.";
+        mensagem.style.color = "red";
+        return;
+    }
+
+    mensagem.textContent = `Obrigado pelo contato, ${nome}! Em breve responderemos para: ${email}.`;
+    mensagem.style.color = "green";
+
+    formulario.reset();
+});
