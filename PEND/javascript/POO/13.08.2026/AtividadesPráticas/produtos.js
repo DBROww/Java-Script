@@ -18,15 +18,50 @@ class Produtos {
 
     constructor() {
         this.produtos = [];
+
+        // Carrega os produtos salvos no localStorage
+        this.carregarProdutos();
+
+        // Exibe os produtos automaticamente quando carregar a página
+        this.exibir()
     }
 
     adicionarProduto(produto) {
         this.produtos.push(produto);
+
+        // Atualiza o localStorage
+        this.salvarProdutos();
     }
 
     excluirProduto(indice) {
         this.produtos.splice(indice, 1);
+
+        // Atualiza o localStorage após excluir
+        this.salvarProdutos();
+
+        // Atualiza a lista na tela
         this.exibir();
+    }
+
+    salvarProdutos() {
+        localStorage.setItem("produtos", JSON.stringify(this.produtos));
+    }
+
+    carregarProdutos() {
+        const produtosSalvos = localStorage.getItem("produtos");
+
+        if (produtosSalvos) {
+            const produtos = JSON.parse(produtosSalvos);
+
+            this.produtos = produtos.map(produto => {
+                return new Produto(
+                    produto.nome,
+                    produto.preco,
+                    produto.categoria,
+                    produto.desconto
+                );
+            });
+        }
     }
 
     exibir() {
@@ -39,15 +74,22 @@ class Produtos {
             resultado.innerHTML += `
                 <div class="produto">
                     <h2>Produto</h2>
+
                     <p>Nome: ${produto.nome}</p>
+
                     <p>Preço: ${produto.aplicarDesconto()} R$</p>
+
                     <p>Categoria: ${produto.categoria}</p>
+
                     <p>Desconto: ${produto.desconto}%</p>
 
-                    <button onclick="produtos.excluirProduto(${indice})" class="botaoExcluir">
+                    <button 
+                        onclick="produtos.excluirProduto(${indice})" 
+                        class="botaoExcluir">
                         Excluir
                     </button>
                 </div>
+
                 <br>
             `;
 
