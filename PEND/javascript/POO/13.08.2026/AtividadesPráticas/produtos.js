@@ -24,19 +24,29 @@ class Produtos {
         this.produtos.push(produto);
     }
 
+    excluirProduto(indice) {
+        this.produtos.splice(indice, 1);
+        this.exibir();
+    }
+
     exibir() {
         const resultado = document.querySelector("#resultado");
 
         resultado.innerHTML = "";
 
-        this.produtos.forEach(produto => {
+        this.produtos.forEach((produto, indice) => {
 
             resultado.innerHTML += `
-                <div>
+                <div class="produto">
+                    <h2>Produto</h2>
                     <p>Nome: ${produto.nome}</p>
-                    <p>Preço: ${produto.aplicarDesconto()}</p>
+                    <p>Preço: ${produto.aplicarDesconto()} R$</p>
                     <p>Categoria: ${produto.categoria}</p>
                     <p>Desconto: ${produto.desconto}%</p>
+
+                    <button onclick="produtos.excluirProduto(${indice})" class="botaoExcluir">
+                        Excluir
+                    </button>
                 </div>
                 <br>
             `;
