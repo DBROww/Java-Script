@@ -14,7 +14,7 @@
     --bg-video: #020617;
     --texto-principal: #f8fafc;
     --texto-secundario: #94a3b8;
-    --cor-accent: #38bdf8;
+    --cor-icons: red;
     --cor-borda: #334155;
     --sombra: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
 }
@@ -36,8 +36,8 @@ header {
     width: 100%;
     padding: 2rem 1rem;
     text-align: center;
-    background-color: var(--bg-card)
-    
+    background-color: var(--bg-card);
+    margin-bottom: 10vh;
 }
 
 header h1 {
@@ -65,7 +65,7 @@ main {
     flex-direction: column;
     align-items: center;
     background-color: var(--bg-card);
-    width: 50%;
+    width: 55%;
     padding: 2rem;
     border-radius: 16px;
     border: 1px solid var(--cor-borda);
@@ -86,7 +86,43 @@ main {
 }
 
 #baterPonto h2 span {
-    color: var(--cor-accent);
+    color: var(--cor-icons);
+}
+
+/* Personaliza o feedback #resposta*/
+.feedback {
+    margin-left: 165px;
+    background-color: rgb(5, 191, 95) !important;
+    color: white !important;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: solid 2px var(--cor-borda);
+}
+
+.aviso {
+    margin-left: 20px;
+    background-color: rgb(194, 18, 18) !important;
+    color: white !important;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: solid 2px var(--cor-borda);
+}
+
+#botao {
+    margin-top: 2rem;
+    background-color: rgb(10, 164, 10);
+    color: var(--texto-principal);
+    padding: 0.5rem;
+    border: solid 2px var(--cor-borda);
+    border-radius: 10px;
+    width: 150px;
+    height: 50px;
+    font-weight: 600;
+}
+
+#botao:hover {
+    cursor: pointer;
+    background-color: rgb(5, 191, 95);
 }
 
 /* Seção de Localização */
@@ -104,7 +140,7 @@ main {
 }
 
 #localizacao i {
-    color: var(--cor-accent);
+    color: var(--cor-icons);
     font-size: 1.1rem;
 }
 
@@ -121,13 +157,14 @@ main {
 
 /* Seção da Câmera (Vídeo) */
 #camera {
-    width: 80%;
-    height: 80%;
+    width: 38vW;
+    height: 65vh;
     background-color: var(--bg-video);
     border-radius: 12px;
     border: 2px solid var(--cor-borda);
     object-fit: cover;
-    transform: scaleX(-1); /* Espelha a câmera para ficar mais natural */
+    transform: scaleX(-1);
+    /* Espelha a câmera para ficar mais natural */
 }
 
 /* ==========================================================================

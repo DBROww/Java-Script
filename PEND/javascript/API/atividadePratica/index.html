@@ -14,6 +14,8 @@
         <h1>Monitoramento de ponto</h1>
     </header>
 
+    <!-- Este index tem como objetivo simular um monitoramento de "presença" onde o site pega a localização do dispossitivo do usuário através do geolocation (apenas com permissão), e também simula o ato de "bater ponto" através de uma câmera e um botão -->
+
     <main>
         <div id="baterPonto">
             <h2>Informações do dispositivo</h2>
@@ -23,8 +25,10 @@
                 <i class="bi bi-crosshair"></i><span id="precisao"></span>
             </div>
             <div id="cameraSection"></div>
-            <h2>Câmera <span><i class="bi bi-camera-fill"></i></span> </h2>
+            <h2>Câmera <span><i class="bi bi-camera-fill"></i></span> <span id="resposta"></span> </h2>
+            
             <video src="" autoplay id="camera"></video>
+            <button id="botao">BATER PONTO</button>
         </div>
     </main>
 
