@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bate ponto ai</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Monitoramento de ponto</h1>
+    </header>
+
+    <main>
+        <div id="baterPonto">
+            <h2>Informações do dispositivo</h2>
+            <div id="localizacao">
+                <i class="bi bi-geo-alt-fill"></i><span id="latitude"></span>
+                <i class="bi bi-geo-alt-fill"></i><span id="longitude"></span>
+                <i class="bi bi-crosshair"></i><span id="precisao"></span>
+            </div>
+            <div id="cameraSection"></div>
+            <h2>Câmera <span><i class="bi bi-camera-fill"></i></span> </h2>
+            <video src="" autoplay id="camera"></video>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
