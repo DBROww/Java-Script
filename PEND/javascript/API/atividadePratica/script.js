@@ -1,9 +1,15 @@
+const video = document.querySelector("#camera");
+const canvas = document.querySelector("#canvas");
+const botao = document.querySelector("#botao");
+const foto = document.querySelector("#foto");
+const resposta = document.querySelector("#resposta");
+
 navigator.geolocation.getCurrentPosition(
     function (posicao) {
         const latitudeSpan = document.querySelector("#latitude");
         const longitudeSpan = document.querySelector("#longitude");
         const precisaoSpan = document.querySelector("#precisao");
-        
+
         latitudeSpan.textContent = `Latitude: ${posicao.coords.latitude}`;
         longitudeSpan.textContent = `Longitude: ${posicao.coords.longitude}`;
         precisaoSpan.textContent = `Precisao: ${posicao.coords.accuracy}m`;
@@ -25,7 +31,6 @@ navigator.mediaDevices.getUserMedia({
 })
 
     .then(function (stream) {
-        const video = document.querySelector("#camera");
         video.srcObject = stream;
         camera = true;
     })
@@ -35,17 +40,35 @@ navigator.mediaDevices.getUserMedia({
         camera = false;
     });
 
-const botao = document.querySelector("#botao");
 
 botao.addEventListener('click', function () {
-    const resposta = document.querySelector("#resposta");
+
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    const contexto = canvas.getContext("2d");
+
+    contexto.drawImage(
+        video,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
     if (localizacao & camera !== false) {
         resposta.textContent = "Ponto confirmado!";
+        resposta.classList.remove('aviso');
         resposta.classList.add('feedback');
+
+        foto.src = canvas.toDataURL("image/png");
+        video.style.display = "none";
+        foto.style.display = "block";
     }
     else {
         resposta.textContent = "A Localização e a Câmera precisam estar ativas!";
         resposta.classList.add('aviso');
     }
+
+
 });
