@@ -23,7 +23,7 @@ body {
     background-color: var(--bg-principal);
     color: var(--texto-principal);
     min-height: 100vh;
-    display: flex;
+    display: flex;  
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
