@@ -1,0 +1,173 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f2f5f8;
+    color: #333;
+    min-height: 100vh;
+}
+
+/* Cabeçalho */
+body::before {
+    content: "CLIMA";
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding-left: 60px;
+    background: #ffffff;
+    color: #1479c9;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    margin-top: 45px;
+    margin-bottom: 25px;
+    color: #1d4f73;
+    font-size: 32px;
+}
+
+/* Área de pesquisa */
+label {
+    display: block;
+    width: 600px;
+    max-width: 90%;
+    margin: 0 auto 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+}
+
+/* Input */
+#cidade {
+    display: block;
+    width: 600px;
+    max-width: 90%;
+    height: 48px;
+    margin: 0 auto;
+    padding: 0 16px;
+    border: 1px solid #ccd5dc;
+    border-radius: 8px;
+    background: #ffffff;
+    font-size: 16px;
+    outline: none;
+    transition: 0.2s;
+}
+
+/* Sombra no input quando clicado */
+#cidade:focus {
+    border-color: #1683d8;
+    box-shadow: 0 0 0 3px rgba(22, 131, 216, 0.12);
+}
+
+/* Cor do texto dentro do input */
+#cidade::placeholder {
+    color: #999;
+}
+
+/* Botão */
+#buscar {
+    display: block;
+    width: 600px;
+    max-width: 90%;
+    height: 48px;
+    margin: 15px auto 30px;
+    border: none;
+    border-radius: 8px;
+    background: #1683d8;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#buscar:hover {
+    background: #106eb7;
+}
+
+#buscar:active {
+    transform: scale(0.98);
+}
+
+/* Resultado */
+#resultado {
+    width: 700px;
+    max-width: 90%;
+    min-height: 150px;
+    margin: 0 auto 50px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Nome da cidade */
+#resultado h2 {
+    text-align: center;
+    color: #1d4f73;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Informações */
+#info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+#info p {
+    padding: 15px;
+    background: #f5f8fa;
+    border-radius: 8px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+#info strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+/* Mensagens iniciais e erros */
+#resultado > p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+
+    body::before {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-top: 30px;
+    }
+
+    #resultado {
+        padding: 20px;
+    }
+
+    #info {
+        grid-template-columns: 1fr;
+    }
+
+    #resultado h2 {
+        font-size: 24px;
+    }
+}
