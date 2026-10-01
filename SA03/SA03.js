@@ -29,7 +29,6 @@ jogosGeneros.addEventListener("click", buscarGeneros);
 fotoJogo.addEventListener("click", buscarFotos);
 
 // Definindo funções
-
 async function fazerRequisicao(url) {
 
     const resposta = await fetch(url);
@@ -44,7 +43,6 @@ async function fazerRequisicao(url) {
 }
 
 // Função para pesquisar um jogo
-
 async function pesquisar() {
 
     const nomeJogo = inputJogo.value.trim();
@@ -65,7 +63,7 @@ async function pesquisar() {
 
         const url = `${URL_BASE}/games?key=${API_KEY}&search=${encodeURIComponent(nomeJogo)}&page_size=10`; // Chama a API
 
-        const dados = await fazerRequisicao(url); // Chama a API
+        const dados = await fazerRequisicao(url); // Espera o resultado da API
 
         if (dados.results.length === 0) {
 
@@ -96,15 +94,15 @@ async function pesquisar() {
 
 
                         <p>
-                            ⭐ Nota: ${jogo.rating || "Não disponível"}
+                             Nota: ⭐${jogo.rating || "Não disponível"}
                         </p>
 
                         <p>
-                            📅 Lançamento: ${jogo.released || "Não informado"}
+                            Lançamento: ${jogo.released || "Não informado"}
                         </p>
 
                         <p>
-                            🎮 Avaliações: ${jogo.ratings_count || 0}
+                            Avaliações: ❤️${jogo.ratings_count || 0}
                         </p>
 
                     </article>
@@ -125,7 +123,6 @@ async function pesquisar() {
 
 
 // últimos jogos lançados no mês
-
 async function buscarUltimosJogos() {
 
     resultado.innerHTML = "<p>Buscando jogos lançados recentemente...</p>";
@@ -171,7 +168,7 @@ async function buscarUltimosJogos() {
 
 
                         <p>
-                            📅 ${jogo.released || "Data não disponível"}
+                            ${jogo.released || "Data não disponível"}
                         </p>
 
                         <p>
@@ -196,7 +193,6 @@ async function buscarUltimosJogos() {
 
 
 // Jogo aleatório para o botão: Você sabia?
-
 async function buscarJogoAleatorio() {
 
     resultado.innerHTML = "<p>Procurando uma curiosidade...</p>"; // Feedback
@@ -264,7 +260,6 @@ async function buscarJogoAleatorio() {
 
 
 // Busca a lista dos jogos mais avaliados
-
 async function jogoAvaliado() {
 
     resultado.innerHTML =
@@ -298,12 +293,12 @@ async function jogoAvaliado() {
                         >
 
                         <p>
-                            ⭐ Nota:
+                            Nota: ⭐
                             ${jogo.rating || "Não disponível"}
                         </p>
 
                         <p>
-                            📅 Lançamento:
+                            Lançamento:
                             ${jogo.released || "Não informado"}
                         </p>
 
@@ -325,7 +320,6 @@ async function jogoAvaliado() {
 
 
 // Generos de jogos
-
 async function buscarGeneros() {
 
     resultado.innerHTML = "<p>Carregando gêneros...</p>"; // Feedback
@@ -448,7 +442,6 @@ async function buscarFotos() {
                         src="${foto.image}"
                         alt="Screenshot de ${jogo.name}"
                     >
-
                 `;
         });
 

@@ -1,31 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap");
 
-/* ==========================================================
-   Tokens
-   ========================================================== */
-
 :root {
     color-scheme: dark;
 
-    --bg: #0a0c11;
-    --bg-elevado: #10131a;
-    --superficie: #151922;
-    --superficie-2: #1b202b;
+    --background: #0a0c11;
+    --segunda-cor: #173768;
+    --fundo: #151922;
+    --fundo-2: #1b202b;
     --borda: #252b38;
     --borda-forte: #343c4d;
 
     --texto: #e9edf4;
-    --texto-suave: #9aa3b5;
+    --texto-suave: #c9d2e3;
     --texto-fraco: #6b7489;
 
-    --acento: #c4ff3d;
-    --acento-escuro: #9fd61f;
-    --acento-texto: #0a0c11;
-    --acento-brilho: rgba(196, 255, 61, 0.18);
+    --cor-destaque: #3d8bff;
+    --cor-destaque-borda-neon: #4db0fb;
+    --cor-destaque-texto: #0a0c11;
+    --cor-destaque-brilho: rgba(77, 61, 255, 0.18);
 
-    --raio-sm: 8px;
-    --raio: 12px;
-    --raio-lg: 16px;
+    --border-8px: 8px;
+    --border-12px: 12px;
+    --border-16px: 16px;
 
     --fonte-titulo: "Chakra Petch", system-ui, sans-serif;
     --fonte-texto: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -33,10 +29,6 @@
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --largura: min(1200px, 100% - 32px);
 }
-
-/* ==========================================================
-   Base
-   ========================================================== */
 
 *,
 *::before,
@@ -46,7 +38,7 @@
 
 html {
     -webkit-text-size-adjust: 100%;
-    scrollbar-color: var(--borda-forte) var(--bg);
+    scrollbar-color: var(--borda-forte) var(--background);
 }
 
 body {
@@ -55,7 +47,7 @@ body {
     padding-bottom: 80px;
     background:
         radial-gradient(1200px 500px at 50% -200px, rgba(196, 255, 61, 0.07), transparent 70%),
-        var(--bg);
+        var(--background);
     color: var(--texto);
     font-family: var(--fonte-texto);
     font-size: 16px;
@@ -65,8 +57,8 @@ body {
 }
 
 ::selection {
-    background: var(--acento);
-    color: var(--acento-texto);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-texto);
 }
 
 h1,
@@ -89,10 +81,7 @@ body > :not(header):not(script) {
     margin-inline: auto;
 }
 
-/* ==========================================================
-   Header
-   ========================================================== */
-
+/* Header */
 header {
     position: sticky;
     top: 0;
@@ -116,21 +105,18 @@ header h1 {
     letter-spacing: 0.18em;
 }
 
-/* Marca: um pequeno losango neon antes do nome */
+/* Cria um pequeno losango antes do nome */
 header h1::before {
     content: "";
     width: 12px;
     height: 12px;
-    background: var(--acento);
+    background: var(--cor-destaque);
     border-radius: 2px;
     transform: rotate(45deg);
-    box-shadow: 0 0 16px var(--acento-brilho);
+    box-shadow: 0 0 16px var(--cor-destaque-brilho);
 }
 
-/* ==========================================================
-   Título principal
-   ========================================================== */
-
+/* Titulo principal */
 body > h1 {
     margin-top: 72px;
     margin-bottom: 28px;
@@ -140,25 +126,22 @@ body > h1 {
     text-align: center;
 }
 
-/* ==========================================================
-   Barra de pesquisa (1ª section)
-   ========================================================== */
-
+/* Barra de pesquisa */
 body > section:nth-of-type(1) {
     display: flex;
     gap: 8px;
     max-width: 680px;
     padding: 6px;
-    background: var(--superficie);
+    background: var(--fundo);
     border: 1px solid var(--borda);
-    border-radius: var(--raio-lg);
+    border-radius: var(--border-16px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
 
 body > section:nth-of-type(1):focus-within {
-    border-color: var(--acento-escuro);
-    box-shadow: 0 0 0 4px var(--acento-brilho), 0 10px 30px rgba(0, 0, 0, 0.35);
+    border-color: var(--cor-destaque-borda-neon);
+    box-shadow: 0 0 0 4px var(--cor-destaque-brilho), 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 #inputJogo {
@@ -171,21 +154,22 @@ body > section:nth-of-type(1):focus-within {
     outline: none;
     color: var(--texto);
     font-family: inherit;
-    font-size: 16px; /* evita zoom automático no iOS */
+    font-size: 16px;
 }
 
 #inputJogo::placeholder {
     color: var(--texto-fraco);
 }
 
+/* Botão de pesquisa */
 #pesquisarJogo {
     flex-shrink: 0;
     height: 48px;
     padding: 0 22px;
-    background: var(--acento);
-    color: var(--acento-texto);
+    background: var(--cor-destaque);
+    color: var(--cor-destaque-texto);
     border: 0;
-    border-radius: var(--raio);
+    border-radius: var(--border-12px);
     font-family: var(--fonte-titulo);
     font-size: 0.95rem;
     font-weight: 700;
@@ -196,9 +180,7 @@ body > section:nth-of-type(1):focus-within {
     transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
 }
 
-/* ==========================================================
-   Atalhos / categorias (2ª section)
-   ========================================================== */
+
 
 body > section:nth-of-type(2) {
     display: flex;
@@ -212,7 +194,7 @@ body > section:nth-of-type(2) {
 .botao {
     height: 40px;
     padding: 0 16px;
-    background: var(--bg-elevado);
+    background: var(--segunda-cor);
     color: var(--texto-suave);
     border: 1px solid var(--borda);
     border-radius: 999px;
@@ -236,26 +218,24 @@ body > section:nth-of-type(2) {
 
 .botao:focus-visible,
 #pesquisarJogo:focus-visible {
-    outline: 2px solid var(--acento);
+    outline: 2px solid var(--cor-destaque);
     outline-offset: 3px;
 }
 
 @media (hover: hover) and (pointer: fine) {
     #pesquisarJogo:hover {
-        background: #d2ff66;
+        background: #66b5ff;
     }
 
+    /* Botões abaixo da area de pesquisa */
     .botao:hover {
         color: var(--texto);
-        background: var(--superficie-2);
+        background: var(--fundo-2);
         border-color: var(--borda-forte);
     }
 }
 
-/* ==========================================================
-   Área de resultados
-   ========================================================== */
-
+/* Section #resultados*/
 #resultado {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -280,7 +260,7 @@ body > section:nth-of-type(2) {
     content: "";
     width: 4px;
     height: 1.1em;
-    background: var(--acento);
+    background: var(--cor-destaque);
     border-radius: 2px;
 }
 
@@ -289,9 +269,9 @@ body > section:nth-of-type(2) {
     grid-column: 1 / -1;
     margin: 0;
     padding: 28px 20px;
-    background: var(--bg-elevado);
+    background: var(--fundo-2);
     border: 1px dashed var(--borda-forte);
-    border-radius: var(--raio);
+    border-radius: var(--border-12px);
     color: var(--texto-suave);
     text-align: center;
 }
@@ -301,19 +281,16 @@ body > section:nth-of-type(2) {
     visibility: hidden;
 }
 
-/* ==========================================================
-   Card de jogo
-   ========================================================== */
-
+/* Card do jogo */
 .cardJogo {
     display: flex;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
     padding-bottom: 16px;
-    background: var(--superficie);
+    background: var(--fundo);
     border: 1px solid var(--borda);
-    border-radius: var(--raio-lg);
+    border-radius: var(--border-16px);
     transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
 }
 
@@ -323,7 +300,7 @@ body > section:nth-of-type(2) {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    background: var(--superficie-2);
+    background: var(--fundo-2);
     margin-bottom: 14px;
 }
 
@@ -350,7 +327,7 @@ body > section:nth-of-type(2) {
     }
 }
 
-/* Card único do "Você já conhecia?" ganha destaque */
+/* Card único do "Você já conhecia?" ganha cor-destaque */
 #resultado > .cardJogo:only-child {
     grid-column: 1 / -1;
     width: 100%;
@@ -374,19 +351,16 @@ body > section:nth-of-type(2) {
     order: -2;
     margin: 0;
     padding: 12px 24px;
-    background: var(--bg-elevado);
+    background: var(--fundo-2);
     border-bottom: 1px solid var(--borda);
-    color: var(--acento);
+    color: var(--texto);
     font-size: 0.8rem !important;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
 }
 
-/* ==========================================================
-   Card de gênero (texto sobre a imagem)
-   ========================================================== */
-
+/* Card jogo genero */
 .cardGenero {
     position: relative;
     display: flex;
@@ -395,9 +369,9 @@ body > section:nth-of-type(2) {
     aspect-ratio: 4 / 3;
     overflow: hidden;
     padding: 18px;
-    background: var(--superficie);
+    background: var(--fundo);
     border: 1px solid var(--borda);
-    border-radius: var(--raio-lg);
+    border-radius: var(--border-16px);
     isolation: isolate;
 }
 
@@ -437,23 +411,17 @@ body > section:nth-of-type(2) {
     }
 }
 
-/* ==========================================================
-   Screenshots
-   ========================================================== */
-
+/* Fotos jogos */
 .screenshot {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    background: var(--superficie-2);
+    background: var(--fundo-2);
     border: 1px solid var(--borda);
-    border-radius: var(--raio);
+    border-radius: var(--border-12px);
 }
 
-/* ==========================================================
-   Entrada suave dos resultados
-   ========================================================== */
-
+/* Animação aparecer resultados */
 @keyframes aparecer {
     from {
         opacity: 0;
@@ -483,9 +451,7 @@ body > section:nth-of-type(2) {
     }
 }
 
-/* ==========================================================
-   Mobile
-   ========================================================== */
+/* Responsividade mobile */
 
 @media (max-width: 560px) {
     body > h1 {
