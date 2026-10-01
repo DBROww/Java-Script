@@ -15,11 +15,25 @@
         <h1>GAMING</h1>
     </header>
 
-    <section>
-        <h1>O que você gostaria de ver hoje?</h1>
-        <button>Últimos jogos lançados esse mês</button>
-    </section>
+    <h1>O que você gostaria de ver hoje?</h1>
     
+    <section>
+        <input type="text" name="nomeJogo" id="inputJogo" placeholder="Digite o nome de um jogo">
+        <button id="pesquisarJogo">Pesquisar Jogo</button>
+    </section>
+
+    <section>
+        <button class="botao ultimosJogos">Últimos jogos lançados esse mês</button>
+        <button class="botao jogoAleatorio">Você já conhecia?</button>
+        <button class="botao listaAvaliados">Lista de jogos com melhores avaliações</button>
+        <button class="botao jogosGeneros">Gêneros</button>
+        <button class="botao fotoJogo">Fotos de um jogo</button>
+    </section>
+
+    <section id="resultado">
+<!-- Os resultados aparecerão aqui -->
+    </section>
+
     <script src="SA03.js"></script>
 
 </body>

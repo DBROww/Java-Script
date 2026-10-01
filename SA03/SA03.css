@@ -1,0 +1,507 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap");
+
+/* ==========================================================
+   Tokens
+   ========================================================== */
+
+:root {
+    color-scheme: dark;
+
+    --bg: #0a0c11;
+    --bg-elevado: #10131a;
+    --superficie: #151922;
+    --superficie-2: #1b202b;
+    --borda: #252b38;
+    --borda-forte: #343c4d;
+
+    --texto: #e9edf4;
+    --texto-suave: #9aa3b5;
+    --texto-fraco: #6b7489;
+
+    --acento: #c4ff3d;
+    --acento-escuro: #9fd61f;
+    --acento-texto: #0a0c11;
+    --acento-brilho: rgba(196, 255, 61, 0.18);
+
+    --raio-sm: 8px;
+    --raio: 12px;
+    --raio-lg: 16px;
+
+    --fonte-titulo: "Chakra Petch", system-ui, sans-serif;
+    --fonte-texto: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --largura: min(1200px, 100% - 32px);
+}
+
+/* ==========================================================
+   Base
+   ========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: var(--borda-forte) var(--bg);
+}
+
+body {
+    margin: 0;
+    min-height: 100dvh;
+    padding-bottom: 80px;
+    background:
+        radial-gradient(1200px 500px at 50% -200px, rgba(196, 255, 61, 0.07), transparent 70%),
+        var(--bg);
+    color: var(--texto);
+    font-family: var(--fonte-texto);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+    background: var(--acento);
+    color: var(--acento-texto);
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--fonte-titulo);
+    line-height: 1.15;
+    margin: 0;
+    text-wrap: balance;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+/* Tudo que está direto no body (exceto o header) fica centralizado */
+body > :not(header):not(script) {
+    width: var(--largura);
+    margin-inline: auto;
+}
+
+/* ==========================================================
+   Header
+   ========================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding-inline: max(16px, (100% - 1200px) / 2);
+    background: rgba(10, 12, 17, 0.78);
+    border-bottom: 1px solid var(--borda);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+}
+
+/* Marca: um pequeno losango neon antes do nome */
+header h1::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: var(--acento);
+    border-radius: 2px;
+    transform: rotate(45deg);
+    box-shadow: 0 0 16px var(--acento-brilho);
+}
+
+/* ==========================================================
+   Título principal
+   ========================================================== */
+
+body > h1 {
+    margin-top: 72px;
+    margin-bottom: 28px;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+/* ==========================================================
+   Barra de pesquisa (1ª section)
+   ========================================================== */
+
+body > section:nth-of-type(1) {
+    display: flex;
+    gap: 8px;
+    max-width: 680px;
+    padding: 6px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    transition: border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+
+body > section:nth-of-type(1):focus-within {
+    border-color: var(--acento-escuro);
+    box-shadow: 0 0 0 4px var(--acento-brilho), 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+#inputJogo {
+    flex: 1;
+    min-width: 0;
+    height: 48px;
+    padding: 0 14px;
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: var(--texto);
+    font-family: inherit;
+    font-size: 16px; /* evita zoom automático no iOS */
+}
+
+#inputJogo::placeholder {
+    color: var(--texto-fraco);
+}
+
+#pesquisarJogo {
+    flex-shrink: 0;
+    height: 48px;
+    padding: 0 22px;
+    background: var(--acento);
+    color: var(--acento-texto);
+    border: 0;
+    border-radius: var(--raio);
+    font-family: var(--fonte-titulo);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 160ms var(--ease-out), transform 160ms var(--ease-out);
+}
+
+/* ==========================================================
+   Atalhos / categorias (2ª section)
+   ========================================================== */
+
+body > section:nth-of-type(2) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 56px;
+}
+
+.botao {
+    height: 40px;
+    padding: 0 16px;
+    background: var(--bg-elevado);
+    color: var(--texto-suave);
+    border: 1px solid var(--borda);
+    border-radius: 999px;
+    font-family: var(--fonte-texto);
+    font-size: 0.925rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition:
+        color 160ms var(--ease-out),
+        background-color 160ms var(--ease-out),
+        border-color 160ms var(--ease-out),
+        transform 160ms var(--ease-out);
+}
+
+/* Feedback de clique imediato */
+#pesquisarJogo:active,
+.botao:active {
+    transform: scale(0.97);
+}
+
+.botao:focus-visible,
+#pesquisarJogo:focus-visible {
+    outline: 2px solid var(--acento);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    #pesquisarJogo:hover {
+        background: #d2ff66;
+    }
+
+    .botao:hover {
+        color: var(--texto);
+        background: var(--superficie-2);
+        border-color: var(--borda-forte);
+    }
+}
+
+/* ==========================================================
+   Área de resultados
+   ========================================================== */
+
+#resultado {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+/* Título da lista ocupa a linha toda */
+#resultado > h2 {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--borda);
+    font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+    font-weight: 700;
+}
+
+#resultado > h2::before {
+    content: "";
+    width: 4px;
+    height: 1.1em;
+    background: var(--acento);
+    border-radius: 2px;
+}
+
+/* Mensagens de status (carregando, erro, vazio) */
+#resultado > p {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 28px 20px;
+    background: var(--bg-elevado);
+    border: 1px dashed var(--borda-forte);
+    border-radius: var(--raio);
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+/* Imagens sem capa não mostram ícone quebrado */
+#resultado img[src=""] {
+    visibility: hidden;
+}
+
+/* ==========================================================
+   Card de jogo
+   ========================================================== */
+
+.cardJogo {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 16px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-lg);
+    transition: border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+/* Capa sempre no topo do card */
+.cardJogo img {
+    order: -1;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--superficie-2);
+    margin-bottom: 14px;
+}
+
+.cardJogo h2,
+.cardJogo h3 {
+    padding-inline: 16px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.cardJogo p {
+    margin: 0;
+    padding: 3px 16px;
+    color: var(--texto-suave);
+    font-size: 0.925rem;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cardJogo:hover {
+        border-color: var(--borda-forte);
+        transform: translateY(-3px);
+    }
+}
+
+/* Card único do "Você já conhecia?" ganha destaque */
+#resultado > .cardJogo:only-child {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 760px;
+    margin-inline: auto;
+    padding-bottom: 22px;
+}
+
+#resultado > .cardJogo:only-child h2 {
+    padding-inline: 24px;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+#resultado > .cardJogo:only-child p {
+    padding-inline: 24px;
+    font-size: 1rem;
+}
+
+/* Primeiro h2 do card vira uma etiqueta acima da imagem */
+.cardJogo > h2:first-of-type:not(:last-of-type) {
+    order: -2;
+    margin: 0;
+    padding: 12px 24px;
+    background: var(--bg-elevado);
+    border-bottom: 1px solid var(--borda);
+    color: var(--acento);
+    font-size: 0.8rem !important;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+/* ==========================================================
+   Card de gênero (texto sobre a imagem)
+   ========================================================== */
+
+.cardGenero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    padding: 18px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio-lg);
+    isolation: isolate;
+}
+
+.cardGenero img {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms var(--ease-out);
+}
+
+.cardGenero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgba(10, 12, 17, 0.95) 10%, rgba(10, 12, 17, 0.35) 60%, rgba(10, 12, 17, 0.1));
+}
+
+.cardGenero h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.cardGenero p {
+    margin: 4px 0 0;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .cardGenero:hover img {
+        transform: scale(1.05);
+    }
+}
+
+/* ==========================================================
+   Screenshots
+   ========================================================== */
+
+.screenshot {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: var(--superficie-2);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+}
+
+/* ==========================================================
+   Entrada suave dos resultados
+   ========================================================== */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+#resultado > * {
+    animation: aparecer 360ms var(--ease-out) both;
+}
+
+#resultado > :nth-child(2) { animation-delay: 30ms; }
+#resultado > :nth-child(3) { animation-delay: 60ms; }
+#resultado > :nth-child(4) { animation-delay: 90ms; }
+#resultado > :nth-child(5) { animation-delay: 120ms; }
+#resultado > :nth-child(6) { animation-delay: 150ms; }
+#resultado > :nth-child(n + 7) { animation-delay: 180ms; }
+
+@media (prefers-reduced-motion: reduce) {
+    #resultado > * {
+        animation-name: none;
+    }
+
+    .cardJogo,
+    .cardGenero img {
+        transition: none;
+    }
+}
+
+/* ==========================================================
+   Mobile
+   ========================================================== */
+
+@media (max-width: 560px) {
+    body > h1 {
+        margin-top: 44px;
+    }
+
+    #pesquisarJogo {
+        padding: 0 16px;
+    }
+
+    body > section:nth-of-type(2) {
+        justify-content: flex-start;
+    }
+
+    #resultado {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
